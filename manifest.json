@@ -1,0 +1,42 @@
+{
+    "manifest_version": 3,
+    "name": "Sticky Sidebar Extension",
+    "version": "1.0",
+    "description": "An extension that shows a sticky sidebar.",
+    "action": {
+        "default_icon": "icon.png",
+        "default_title": "Open Sticky Sidebar"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": [
+        "http://*/*",
+        "https://*/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js",
+                "libs/xlsx.full.min.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "sidebar.html"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
+}
